@@ -71,6 +71,46 @@
 		{% endfor %}
 	</div>
 </section>
+<section>
+	<div class="row">
+
+		<button class="btn btn-primary btn-lg" id="edit" data-id="{{ artist.id }}" type="submit">Edit Artist</button>
+        <button class="btn btn-default btn-lg" id="delete" data-id="{{ artist.id }}" type="submit">Delete Artist</button>
+	
+	</div>
+</section>
+
+<script>
+	// edit button
+	const editBtn = document.getElementById('edit')
+	editBtn.onclick = function(e) {
+		const artistID = e.target.dataset.id
+		fetch('/artists/' + artistID +'/edit', {
+			method: 'GET'
+		})
+		.then(response => {
+			window.location.href = '/artists/' + artistID +'/edit';
+		})
+		.catch(error => {
+			console.log(error);
+		})
+    }
+	  
+	// delete button
+	const deleteBtn = document.getElementById('delete')
+  	deleteBtn.onclick = function(e) {
+    	const artistID = e.target.dataset['id']
+    	fetch('/artists/' + artistID, {
+     	method: 'DELETE'
+		})
+		.then(response => {
+        window.location.href = response.url;
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
+</script>
 
 {% endblock %}
 
