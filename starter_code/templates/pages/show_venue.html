@@ -76,10 +76,8 @@
 </section>
 <section>
 	<div class="row">
-
 		<button class="btn btn-primary btn-lg" id="edit" data-id="{{ venue.id }}" type="submit">Edit Venue</button>
         <button class="btn btn-default btn-lg" id="delete" data-id="{{ venue.id }}" type="submit">Delete Venue</button>
-	
 	</div>
 </section>
 
@@ -95,9 +93,6 @@
 		.then(response => {
 			window.location.href = '/venues/' + venueID +'/edit';
 		})
-		.catch(error => {
-			console.log(error);
-		})
     }
 	  
 	// delete button
@@ -109,9 +104,6 @@
 		})
 		.then(response => {
         window.location.href = response.url;
-		})
-		.catch(error => {
-			console.log(error);
 		})
 	}
 </script>
